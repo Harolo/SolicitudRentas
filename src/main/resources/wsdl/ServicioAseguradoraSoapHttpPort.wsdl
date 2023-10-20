@@ -1,0 +1,496 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.3.0-b170407.2038 svn-revision#2eaca54d17a59d265c6fe886b7fd0027836c766c. --><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://servicioaseguradora.servicios.webservices.bonospensionales.minhacienda.gov.co/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="ServicioAseguradora" targetNamespace="http://servicioaseguradora.servicios.webservices.bonospensionales.minhacienda.gov.co/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wssutil="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><wsp:UsingPolicy wssutil:Required="true"/><ns0:Policy xmlns:ns0="http://schemas.xmlsoap.org/ws/2004/09/policy" wssutil:Id="Wssp1.2-2007-UsernameToken-Plain.xml"><ns1:SupportingTokens xmlns:ns1="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702"><ns0:Policy><ns1:UsernameToken ns1:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient"><ns0:Policy><ns1:WssUsernameToken10/></ns0:Policy></ns1:UsernameToken></ns0:Policy></ns1:SupportingTokens></ns0:Policy>
+    <wsdl:types>
+        <xs:schema xmlns:tns="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/BeneficiariosDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/BeneficiariosDTO">
+            <xs:complexType name="BeneficiariosDTO">
+                <xs:sequence>
+                    <xs:element name="tipoTipoBeneficiario" type="tns:TipoTipoBeneficiario" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="tipoTipoDocumento" type="tns:TipoTipoDocumento" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoDocumento" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoPrimerApellido" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoSegundoApellido" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoPrimerNombre" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoSegundoNombre" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoGenero" type="tns:TipoGenero" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoFechaNacimiento" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoIndEstudiaAct" type="tns:TipoIndEstudiaAct" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoIndDependeEco" type="tns:TipoIndDependeEco" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoEstadoExpedicion" type="tns:TipoEstadoExpedicion" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoEstadoActual" type="tns:TipoEstadoActual" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="temporBeneficiario" type="tns:TemporBeneficiario" minOccurs="0" maxOccurs="1" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="TipoTipoBeneficiario">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="N"/>
+                    <xs:enumeration value="C"/>
+                    <xs:enumeration value="H"/>
+                    <xs:enumeration value="M"/>
+                    <xs:enumeration value="P"/>
+                    <xs:enumeration value="E"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoTipoDocumento">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="C"/>
+                    <xs:enumeration value="E"/>
+                    <xs:enumeration value="T"/>
+                    <xs:enumeration value="R"/>
+                    <xs:enumeration value="A"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoGenero">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="F"/>
+                    <xs:enumeration value="M"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoIndEstudiaAct">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="S"/>
+                    <xs:enumeration value="N"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoIndDependeEco">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="S"/>
+                    <xs:enumeration value="N"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoEstadoExpedicion">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="N"/>
+                    <xs:enumeration value="I"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoEstadoActual">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="N"/>
+                    <xs:enumeration value="I"/>
+                    <xs:enumeration value="M"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TemporBeneficiario">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="V"/>
+                    <xs:enumeration value="T"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:schema>
+        
+        <xs:schema xmlns:tns="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/NovedadRentaDTO" xmlns:ns3="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/BeneficiariosDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/NovedadRentaDTO">
+             <xs:import namespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/BeneficiariosDTO"/>
+            <xs:complexType name="NovedadRentaDTO">
+                <xs:sequence>
+                    <xs:element name="tipoNovedad" type="tns:TipoNovedad" nillable="false" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="tipoTipoDocumento" type="tns:TipoTipoDocumento" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoDocumento" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoFechaNovedad" type="xs:date" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoValorMesada" type="xs:decimal" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoNumeroMesadas" type="xs:int" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="docSoporteNovedad" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoBeneficiario" type="ns3:BeneficiariosDTO" nillable="true" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="TipoNovedad">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="FA"/>
+                    <xs:enumeration value="IN"/>
+                    <xs:enumeration value="PD"/>
+                    <xs:enumeration value="IM"/>
+                    <xs:enumeration value="NB"/>
+                    <xs:enumeration value="AD"/>
+                    <xs:enumeration value="CM"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoTipoDocumento">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="C"/>
+                    <xs:enumeration value="E"/>
+                    <xs:enumeration value="T"/>
+                    <xs:enumeration value="R"/>
+                    <xs:enumeration value="A"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:schema>
+        
+        <xs:schema xmlns:ns2="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RentaDTO" xmlns:ns1="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/CausanteDTO" xmlns:ns3="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/BeneficiariosDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/SolicitudRenta">
+            <xs:import namespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/CausanteDTO"/>
+            <xs:import namespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RentaDTO"/>
+            <xs:import namespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/BeneficiariosDTO"/>
+            <xs:complexType name="SolicitudRenta">
+                <xs:sequence>
+                    <xs:element name="tipoCausante" type="ns1:CausanteDTO"/>
+                    <xs:element name="tipoRenta" type="ns2:RentaDTO"/>
+                    <xs:element name="tipoBeneficiarios" type="ns3:BeneficiariosDTO" nillable="false" minOccurs="1" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:tns="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/CausanteDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/CausanteDTO">
+            <xs:complexType name="CausanteDTO">
+                <xs:sequence>
+                    <xs:element name="tipoIdentificacion" type="tns:TipoIdentificacion" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoDocumento" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoPrimerApellido" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoSegundoApellido" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoPrimerNombre" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoSegundoNombre" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoGenero" type="tns:TipoGenero" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoFechaNacimiento" type="xs:date" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoEstadoExpedicion" type="tns:TipoEstadoExpedicion" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoEstadoActual" type="tns:TipoEstadoActual" minOccurs="1" maxOccurs="1" nillable="false"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="TipoIdentificacion">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="C"/>
+                    <xs:enumeration value="E"/>
+                    <xs:enumeration value="A"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoGenero">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="F"/>
+                    <xs:enumeration value="M"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoEstadoExpedicion">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="N"/>
+                    <xs:enumeration value="I"/>
+                    <xs:enumeration value="M"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoEstadoActual">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="N"/>
+                    <xs:enumeration value="I"/>
+                    <xs:enumeration value="M"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:schema>
+        <xs:schema xmlns:tns="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RentaDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RentaDTO">
+            <xs:complexType name="RentaDTO">
+                <xs:sequence>
+                    <xs:element name="tipoNumeroPoliza" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoFechaExpedicion" type="xs:date" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoFechaDerecho" type="xs:date" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoInteresTecnico" type="xs:decimal" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoOrigenPrestacion" type="tns:TipoOrigenPrestacion" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoModalidadPrestacion" type="tns:TipoModalidadPrestacion" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoFechaInicioRenDif" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoAfpVen" type="xs:int" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoValorMesada" type="xs:decimal" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoNumeroMesadas" type="xs:int" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoValorReservaInVe" type="xs:decimal" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoValorReservaSob" type="xs:decimal" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoValorReservaAux" type="xs:decimal" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoValorOtrReserva" type="xs:decimal" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoGastosAdmon" type="xs:decimal" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoValorTotRes" type="xs:decimal" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="docSoporteJudicial" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="fechaDocSopteJud" type="xs:date" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="observacionesFalloJud" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="TipoOrigenPrestacion">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="I"/>
+                    <xs:enumeration value="M"/>
+                    <xs:enumeration value="V"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoModalidadPrestacion">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="VI"/>
+                    <xs:enumeration value="VD"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:schema>
+        <xs:schema xmlns:tns="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RegistroDocumentos" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RegistroDocumentos">
+            <xs:complexType name="RegistroDocumentos">
+                <xs:sequence>
+                    <xs:element name="tipoDocumento" type="tns:TipoDocumento" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoIdentificacionC" type="tns:TipoIdentificacionC" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoDocumentoC" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoIdentificacionB" type="tns:TipoIdentificacionB" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoDocumentoB" type="xs:string" minOccurs="0" maxOccurs="1" nillable="true"/>
+                    <xs:element name="tipoArchivo" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                  </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="TipoDocumento">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="CONT"/>
+                    <xs:enumeration value="FLMS"/>
+                    <xs:enumeration value="DOCI"/>
+                    <xs:enumeration value="ACIN"/>
+                    <xs:enumeration value="ACDE"/>
+                    <xs:enumeration value="DSPL"/>
+                    <xs:enumeration value="CERE"/>
+                    <xs:enumeration value="DDEP"/>
+                    <xs:enumeration value="RCIV"/>
+                    <xs:enumeration value="RCMA"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoIdentificacionC">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="C"/>
+                    <xs:enumeration value="E"/>
+                    <xs:enumeration value="A"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="TipoIdentificacionB">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="C"/>
+                    <xs:enumeration value="E"/>
+                    <xs:enumeration value="T"/>
+                    <xs:enumeration value="S"/>
+                    <xs:enumeration value="R"/>
+                    <xs:enumeration value="A"/>
+                </xs:restriction>
+            </xs:simpleType>
+          </xs:schema>
+          
+          
+          <xs:schema xmlns:tns="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RegistroNovedad" xmlns:ns1="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/NovedadRentaDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RegistroNovedad">
+            <xs:complexType name="RegistroNovedad">
+                <xs:sequence>
+                    <xs:element name="tipoIdentificacionCausante" type="tns:TipoIdentificacionCausante" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tipoDocumentoCausante" type="xs:string" minOccurs="1" maxOccurs="1" nillable="false"/>
+                    <xs:element name="tiponovedad" type="ns1:NovedadRentaDTO" nillable="false" minOccurs="1" maxOccurs="1"/>
+                   </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="TipoIdentificacionCausante">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="C"/>
+                    <xs:enumeration value="E"/>
+                    <xs:enumeration value="A"/>
+                </xs:restriction>
+            </xs:simpleType>
+          </xs:schema>
+          
+        <xs:schema xmlns:ns2="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RegistroDocumentos" xmlns:ns1="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/ResultadoDTO" xmlns:ns3="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/SolicitudRenta" xmlns:ns4="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RegistroNovedad" xmlns:tns="http://servicioaseguradora.servicios.webservices.bonospensionales.minhacienda.gov.co/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicioaseguradora.servicios.webservices.bonospensionales.minhacienda.gov.co/">
+            <xs:import namespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/ResultadoDTO"/>
+            <xs:import namespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RegistroDocumentos"/>
+            <xs:import namespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/SolicitudRenta"/>
+            <xs:import namespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/RegistroNovedad"/>
+            <xs:element name="ExcepcionBonosPensionales" nillable="true" type="tns:ExcepcionBonosPensionales"/>
+            <xs:element name="registroDocumentoElement" nillable="true" type="ns2:RegistroDocumentos"/>
+            <xs:element name="registroDocumentoResponseElement" nillable="true" type="ns1:ResultadoDTO"/>
+            <xs:element name="registroSolicitudRentaElement" nillable="true" type="ns3:SolicitudRenta"/>
+            <xs:element name="registroSolicitudRentaResponseElement" nillable="true" type="ns1:ResultadoDTO"/>
+            <xs:element name="registroNovedadElement" nillable="true" type="ns4:RegistroNovedad"/>
+            <xs:element name="registroNovedadResponseElement" nillable="true" type="ns1:ResultadoDTO"/>
+            <xs:complexType name="ExcepcionBonosPensionales">
+                <xs:sequence>
+                    <xs:element name="Message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:tns="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/ResultadoDTO" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0" targetNamespace="http://servicios.webservices.bonospensionales.minhacienda.gov.co/schema/ResultadoDTO">
+            <xs:complexType name="ResultadoDTO">
+                <xs:sequence>
+                    <xs:element name="tipoCodigoTransaccion" type="tns:TipoCodigoTransaccionE"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="TipoCodigoTransaccionE">
+                <xs:sequence>
+                    <xs:element name="value" nillable="true">
+					  <xsd:simpleType>
+						<xsd:annotation>
+						  <xsd:documentation>
+							00	Transaccion exitosa
+							01	Error en el proceso de la solicitud en la OBP
+							02	Tipo de identificacion invalido
+							03	Numero de identificacion invalido
+							04	Identificacion no existe en Registraduria pero si en otra entidad RPM sin fecha de afiliacion
+							05	Identificacion existe en Registraduria pero no existe en otra entidad RPM
+							06	No existe informacion en el sistema
+							07	Existe en Registraduria y en una entidad del RPM pero no hay fecha de afiliacion
+							08	No existe en Registraduria, pero si en otra entidad RPM con fecha de afiliacion
+							09	Beneficiario no se encuentra reportado como afiliado a la entidad solicitante
+							10	Nit consultado no existe en el reporte de la DIAN
+							11	El periodo consultado no se ha cerrado
+							12	El formato del periodo es invalido
+							13	Nit de la entidad pensionante no existe
+							14	Tipo de pension reportado no existe
+							15	Fecha de pension en formato errado.
+							16	Nit de la entidad que reporta la pension no existe.
+							20	El tipo de dato del codigo de operacion no corresponde.
+							21	La longitud del campo codigo de operacion no corresponde
+							22	El tipo de dato del numero de operacion no corresponde.
+							23	La longitud del campo numero de operacion no corresponde.
+							24	El tipo de dato de la fecha de operacion no corresponde.
+							25	La longitud del campo fecha de operacion no corresponde.
+							26	La longitud del campo ISIN no corresponde.
+							27	El tipo de dato del valor nominal no corresponde.
+							28	La longitud del campo valor nominal no corresponde.
+							29	El tipo de dato del depositante destino no corresponde.
+							30	La longitud del campo depositante destino no corresponde.
+							31	El tipo de dato del depositante origen no corresponde.
+							32	La longitud del campo depositante origen no corresponde.
+							33	El tipo de dato de la cuenta del vendedor no corresponde.
+							34	La longitud del campo cuenta del vendedor no corresponde.
+							35	La longitud del campo tipo de documento del vendedor no corresponde.
+							36	El tipo de dato del documento del vendedor no corresponde
+							37	La longitud del campo documento del vendedor no corresponde.
+							38	La longitud del campo nombre del vendedor no corresponde.
+							39	El tipo de dato del valor del vendedor no corresponde.
+							40	La longitud del campo valor del vendedor no corresponde.
+							41	El tipo de dato de la cuenta del comprador no corresponde.
+							42	La longitud del campo cuenta del comprador no corresponde.
+							43	La longitud del campo tipo de documento del comprador no corresponde.
+							44	El tipo de dato del documento del comprador no corresponde.
+							45	La longitud del campo documento del comprador no corresponde.
+							46	El tipo de dato del valor del comprador no corresponde.
+							47	La longitud del campo valor del comprador no corresponde.
+							48	La longitud del campo nombre del vendedor no corresponde.
+							49	La fecha de la operación es posterior a la del sistema.
+							50	El valor nominal no coincide con el valor expedido de los cupones asociados al ISIN.
+							51	No se actualiza el codigo depositante, ni se registra la negociacion, Cupon bloqueado.
+							52	No se actualiza el codigo depositante, ni se registra la negociacion, estado del cupon no valido.
+							53	Error interno en el aplicativo de bonos pensionales.
+							54	No existen cupones negociados asociados al ISIN.
+							79      No se encontro certificadora para el periodo solicitado
+							80	La solicitud no fue realizada por la Entidad Solicitante que la esta consultando
+							81	La solicitud indicada no existe
+							82	La solicitud indicada no ha sido expedida
+							83	La solicitud indicada no corresponde a un afiliado actual de la entidad solicitante
+							84	El empleador indicado aún no se encuentra registrado en el sistema Cetil
+							85	La fecha inicial indicada es anterior a la fecha de creación del empleador
+							86	La fecha final indicada es posterior a la fecha de liquidación del empleador
+							87	La certificación indicada no existe
+							88	La certificación indicada no corresponde a un afiliado actual de la entidad solicitante
+							89      Ya existe una solicitud en trámite
+							90      Datos del ciudadano no coincide con Registraduría o Migración Colombia
+							91      Se recibe la solicitud pero en el estado Pendiente de Aprobacion OBP
+							92      Campos obligatorios están incompletos
+							93      No se adjunta archivo (fallo o tutela)
+							94      La entidad certificadora o el empleador se encuentran inactivo
+							95	La entidad indicada no ha ingresado al sistema Cetil
+							96	El tamaño del archivo anexo supera el máximo permitido
+							97	Tipo de documento soporte no es requerido para la renta.
+							98	No hay disponibilidad del servicio
+							99	No hay permisos para el usuario que esta tratando de consumir el servicio.
+						  </xsd:documentation>
+						</xsd:annotation>
+						<xsd:restriction base="xsd:string">
+						  <xsd:enumeration value="00"/><xsd:enumeration value="01"/>
+						  <xsd:enumeration value="02"/><xsd:enumeration value="03"/>
+						  <xsd:enumeration value="04"/><xsd:enumeration value="05"/>
+						  <xsd:enumeration value="06"/><xsd:enumeration value="07"/>
+						  <xsd:enumeration value="08"/><xsd:enumeration value="09"/>
+						  <xsd:enumeration value="10"/><xsd:enumeration value="11"/>
+						  <xsd:enumeration value="12"/><xsd:enumeration value="13"/>
+						  <xsd:enumeration value="14"/><xsd:enumeration value="15"/>
+						  <xsd:enumeration value="16"/><xsd:enumeration value="20"/>
+						  <xsd:enumeration value="21"/><xsd:enumeration value="22"/>
+						  <xsd:enumeration value="23"/><xsd:enumeration value="24"/>
+						  <xsd:enumeration value="25"/><xsd:enumeration value="26"/>
+						  <xsd:enumeration value="27"/><xsd:enumeration value="28"/>
+						  <xsd:enumeration value="29"/><xsd:enumeration value="30"/>
+						  <xsd:enumeration value="31"/><xsd:enumeration value="32"/>
+						  <xsd:enumeration value="33"/><xsd:enumeration value="34"/>
+						  <xsd:enumeration value="35"/><xsd:enumeration value="36"/>
+						  <xsd:enumeration value="37"/><xsd:enumeration value="38"/>
+						  <xsd:enumeration value="39"/><xsd:enumeration value="40"/>
+						  <xsd:enumeration value="41"/><xsd:enumeration value="42"/>
+						  <xsd:enumeration value="43"/><xsd:enumeration value="44"/>
+						  <xsd:enumeration value="45"/><xsd:enumeration value="46"/>
+						  <xsd:enumeration value="47"/><xsd:enumeration value="48"/>
+						  <xsd:enumeration value="49"/><xsd:enumeration value="50"/>
+						  <xsd:enumeration value="51"/><xsd:enumeration value="52"/>
+						  <xsd:enumeration value="51"/><xsd:enumeration value="52"/>
+						  <xsd:enumeration value="53"/><xsd:enumeration value="54"/>
+						  <xsd:enumeration value="79"/>
+						  <xsd:enumeration value="80"/><xsd:enumeration value="81"/>
+						  <xsd:enumeration value="82"/><xsd:enumeration value="83"/>
+						  <xsd:enumeration value="84"/><xsd:enumeration value="85"/>
+						  <xsd:enumeration value="86"/><xsd:enumeration value="87"/>
+						  <xsd:enumeration value="88"/><xsd:enumeration value="89"/>
+						  <xsd:enumeration value="90"/><xsd:enumeration value="91"/>
+						  <xsd:enumeration value="92"/><xsd:enumeration value="93"/>
+						  <xsd:enumeration value="94"/><xsd:enumeration value="95"/>
+						  <xsd:enumeration value="96"/><xsd:enumeration value="97"/>
+						  <xsd:enumeration value="98"/><xsd:enumeration value="99"/>
+						  </xsd:restriction>
+					  </xsd:simpleType>
+				  </xs:element>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="solicitudRentaInput">
+        <wsdl:part name="parameters" element="tns:registroSolicitudRentaElement"/>
+    </wsdl:message>
+    <wsdl:message name="solicitudRentaOutput">
+        <wsdl:part name="datosRes" element="tns:registroSolicitudRentaResponseElement"/>
+    </wsdl:message>
+    <wsdl:message name="ExcepcionBonosPensionales">
+        <wsdl:part name="ExcepcionBonosPensionales" element="tns:ExcepcionBonosPensionales"/>
+    </wsdl:message>
+    <wsdl:message name="registrarDocumentosInput">
+        <wsdl:part name="parametersDoc" element="tns:registroDocumentoElement"/>
+    </wsdl:message>
+    <wsdl:message name="registrarDocumentosOutput">
+        <wsdl:part name="datosDoc" element="tns:registroDocumentoResponseElement"/>
+    </wsdl:message>
+    <wsdl:message name="registrarNovedadInput">
+        <wsdl:part name="parametersNov" element="tns:registroNovedadElement"/>
+    </wsdl:message>
+    <wsdl:message name="registrarNovedadOutput">
+        <wsdl:part name="datosNov" element="tns:registroNovedadResponseElement"/>
+    </wsdl:message>
+    <wsdl:portType name="ServicioAseguradoraPortType">
+        <wsdl:operation name="solicitudRenta">
+            <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" message="tns:solicitudRentaInput" ns1:Action="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/solicitudRenta"/>
+            <wsdl:output xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" message="tns:solicitudRentaOutput" ns1:Action="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/ServicioAseguradoraPortType/solicitudRentaResponse"/>
+            <wsdl:fault name="ExcepcionBonosPensionales" message="tns:ExcepcionBonosPensionales"/>
+        </wsdl:operation>
+        <wsdl:operation name="registrarDocumentos">
+            <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" message="tns:registrarDocumentosInput" ns1:Action="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/registrarDocumentos"/>
+            <wsdl:output xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" message="tns:registrarDocumentosOutput" ns1:Action="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/ServicioAseguradoraPortType/registrarDocumentosResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registrarNovedad">
+            <wsdl:input xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" message="tns:registrarNovedadInput" ns1:Action="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/registrarNovedad"/>
+            <wsdl:output xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl" message="tns:registrarNovedadOutput" ns1:Action="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/ServicioAseguradoraPortType/registrarNovedadResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ServicioAseguradoraPortTypeSoapHttp" type="tns:ServicioAseguradoraPortType"><wsp:PolicyReference URI="#Wssp1.2-2007-UsernameToken-Plain.xml"/>
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="solicitudRenta">
+            <soap:operation soapAction="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/solicitudRenta"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="datosRes"/>
+            </wsdl:output>
+            <wsdl:fault name="ExcepcionBonosPensionales">
+                <soap:fault name="ExcepcionBonosPensionales" use="literal" encodingStyle=""/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="registrarDocumentos">
+            <soap:operation soapAction="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/registrarDocumentos"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parametersDoc"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="datosDoc"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registrarNovedad">
+            <soap:operation soapAction="http://servicios.webservices.bonospensionales.minhacienda.gov.co/ServicioAseguradora/registrarNovedad"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parametersNov"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="datosNov"/>
+            </wsdl:output>
+          </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ServicioAseguradora">
+        <wsdl:port name="ServicioAseguradoraSoapHttpPort" binding="tns:ServicioAseguradoraPortTypeSoapHttp">
+            <soap:address location="https://pruebas.bonospensionales.gov.co:7778/Servicios/WSAseguradoras/ServicioAseguradoraSoapHttpPort"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
