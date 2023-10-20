@@ -52,7 +52,7 @@ public class SoapClient extends WebServiceGatewaySupport {
             webServiceTemplate.setMessageSender(messageSender);
         }
         String caus = solicitudRenta.getTipoCausante().getTipoDocumento();
-         WebServiceMessageCallback requestPrintCallback = new SoapRequestPrinter("/opt/Seguros/request_"+caus+".xml");
+//         WebServiceMessageCallback requestPrintCallback = new SoapRequestPrinter("/opt/Seguros/request_"+caus+".xml");
         JAXBElement<SolicitudRenta> request = new ObjectFactory().createRegistroSolicitudRentaElement(solicitudRenta);
 
         try {
@@ -61,8 +61,8 @@ public class SoapClient extends WebServiceGatewaySupport {
 
             JAXBElement<ResultadoDTO> response =  (JAXBElement<ResultadoDTO>) webServiceTemplate.marshalSendAndReceive(
                     soapWebServiceURI,
-                    request,
-                    requestPrintCallback
+                    request
+//                    requestPrintCallback
             );
 
             // System.out.println("Comunicacion exitosa. Respuesta: " + response.getValue().getTipoCodigoTransaccion().getValue());
