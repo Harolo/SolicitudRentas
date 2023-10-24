@@ -28,7 +28,6 @@ public class DateParse {
             xCal.setMonth(Integer.parseInt(date[1]));
             xCal.setDay(Integer.parseInt(date[0]));
 
-            //System.out.println("XMLGregorianCalendar: " + xCal);
             return xCal;
         } catch (ParseException | DatatypeConfigurationException e) {
             e.printStackTrace();

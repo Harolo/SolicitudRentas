@@ -18,7 +18,6 @@ public class SolicitudRentasController {
     @Autowired
     private SolicitudRentasService solicitudRentasService;
 
-
     @PostMapping("/registrar")
     public ResponseEntity<ResultadoDTO> registrarSolicitudRentas(@RequestBody RegistroSolicitudRentaElement registroSolicitudRentaElement) {
         return new ResponseEntity<>(solicitudRentasService.registrarSolicitud(registroSolicitudRentaElement), HttpStatus.OK);

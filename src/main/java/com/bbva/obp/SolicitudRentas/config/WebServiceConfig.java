@@ -19,18 +19,14 @@ import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 @Configuration
 @EnableWs
 public class WebServiceConfig {
-
     @Autowired
     private AppProperties appProperties;
-
-
     @Bean
     public Jaxb2Marshaller marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
         marshaller.setContextPath("com.bbva.obp.SolicitudRentas.wsdl");
         return marshaller;
     }
-
     @Bean
     public SoapClient soapClient(Jaxb2Marshaller marshaller) {
         SoapClient client = new SoapClient();
@@ -43,7 +39,6 @@ public class WebServiceConfig {
     @Bean
     public Wss4jSecurityInterceptor securityInterceptor() {
         Wss4jSecurityInterceptor interceptor = new Wss4jSecurityInterceptor();
-        // Adds "Timestamp" and "UsernameToken" sections in SOAP header
         interceptor.setSecurementActions(WSHandlerConstants.TIMESTAMP + " " + WSHandlerConstants.USERNAME_TOKEN);
 
         interceptor.setSecurementActions("UsernameToken");

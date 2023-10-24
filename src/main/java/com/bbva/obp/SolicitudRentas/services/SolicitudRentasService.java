@@ -14,10 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,9 +32,7 @@ public class SolicitudRentasService {
 
 
     public ResultadoDTO registrarSolicitud(RegistroSolicitudRentaElement registroSolicitudRenta) {
-
         SolicitudRenta solicitudRenta = SolicitudRentasMapper.mapToSolicitudRentas(registroSolicitudRenta);
-        // System.out.println("Solicitud Renta OBP => " + solicitudRenta);
         logger.info("Solicitud Renta OBP => {}", solicitudRenta.toString());
 
         ResultadoDTO resultado = soapClient.registrarSolicitudRentas(solicitudRenta);
@@ -51,7 +46,6 @@ public class SolicitudRentasService {
 
         for (int i = 0; i<benefs; i++){
             String logToSave = registroSolicitudRenta.toStringABene(i) + ";" + codigoTransaccion;
-            // System.out.println("Log de respuesta => " + logToSave);
             logger.info("Log de respuesta  => {}", logToSave);
 
 
@@ -64,9 +58,7 @@ public class SolicitudRentasService {
                 registrarEnLog(path, logToSave);
             }
             logger.info("Log de respuesta guardado");
-            // System.out.println("Log de respuesta guardado");
         }
-        // System.out.println("Codigo Respuesta => " + resultado.getTipoCodigoTransaccion().getValue());
         logger.info("Codigo Respuesta => {}", resultado.getTipoCodigoTransaccion().getValue());
         return resultado;
     }

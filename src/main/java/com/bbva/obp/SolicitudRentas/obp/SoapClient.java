@@ -2,7 +2,6 @@ package com.bbva.obp.SolicitudRentas.obp;
 
 
 import com.bbva.obp.SolicitudRentas.controllers.SolicitudRentasController;
-import com.bbva.obp.SolicitudRentas.dto.RegistroSolicitudRentaElement;
 import com.bbva.obp.SolicitudRentas.utils.AppProperties;
 import com.bbva.obp.SolicitudRentas.wsdl.ObjectFactory;
 import com.bbva.obp.SolicitudRentas.wsdl.ResultadoDTO;
@@ -19,7 +18,6 @@ import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 import org.springframework.ws.transport.http.HttpComponentsMessageSender;
 
 import javax.xml.bind.JAXBElement;
-import java.util.Random;
 
 
 public class SoapClient extends WebServiceGatewaySupport {
@@ -42,7 +40,6 @@ public class SoapClient extends WebServiceGatewaySupport {
 
     public ResultadoDTO registrarSolicitudRentas(SolicitudRenta solicitudRenta) {
 
-        //SoapActionCallback soapActionCallback = new SoapActionCallback(soapWebServiceURI + "/solicitudRenta");
         WebServiceTemplate webServiceTemplate = getWebServiceTemplate();
         webServiceTemplate.setInterceptors(new ClientInterceptor[]{ securityInterceptor });
 
@@ -50,26 +47,21 @@ public class SoapClient extends WebServiceGatewaySupport {
             webServiceTemplate.setMessageSender(messageSender);
         }
         String caus = solicitudRenta.getTipoCausante().getTipoDocumento();
-//         WebServiceMessageCallback requestPrintCallback = new SoapRequestPrinter("/opt/Seguros/request_"+caus+".xml");
         JAXBElement<SolicitudRenta> request = new ObjectFactory().createRegistroSolicitudRentaElement(solicitudRenta);
 
         try {
-            // System.out.println("Realizando comunicacion con OBP ...");
             logger.info("Realizando comunicacion con OBP ...");
 
             JAXBElement<ResultadoDTO> response =  (JAXBElement<ResultadoDTO>) webServiceTemplate.marshalSendAndReceive(
                     soapWebServiceURI,
                     request
-//                    requestPrintCallback
             );
 
-            // System.out.println("Comunicacion exitosa. Respuesta: " + response.getValue().getTipoCodigoTransaccion().getValue());
             logger.info("Comunicacion exitosa. Respuesta: " + response.getValue().getTipoCodigoTransaccion().getValue());
 
             return response.getValue();
         }
         catch (Exception e) {
-            // System.out.println("Error en comunicacion con OBP => " + e.getMessage());
             logger.info("Error en comunicacion con OBP => " + e.getMessage());
 
             e.printStackTrace();
@@ -80,20 +72,5 @@ public class SoapClient extends WebServiceGatewaySupport {
             return resultado;
         }
 
-    }
-
-
-    public String registrarSolicitudRentasMock(RegistroSolicitudRentaElement registroSolicitudRentaElement){
-        Random random = new Random();
-        int probabilidad = random.nextInt(2);
-
-        if (probabilidad == 0) {
-            // 50% de probabilidad de que sea "00"
-            return "00";
-        } else {
-            // 50% de probabilidad de que sea un número aleatorio entre "01" y "99"
-            Integer numeroAleatorio = random.nextInt(99) + 1;
-            return String.format("%02d", numeroAleatorio);
-        }
     }
 }

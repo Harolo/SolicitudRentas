@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-// this class is a SoapActionCallback that save the XML request and the XML response in two corresponding files
 public class SoapRequestPrinter implements WebServiceMessageCallback {
 
     private String filePath;
@@ -29,7 +28,6 @@ public class SoapRequestPrinter implements WebServiceMessageCallback {
                 Path path = Paths.get(filePath);
                 path.toFile().getParentFile().mkdirs();
                 Files.write(path, outputStream.toByteArray());
-                //System.out.println(outputStream.toString());
             }
         }
     }
