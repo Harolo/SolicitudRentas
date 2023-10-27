@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="warn">
     <Appenders>
-        <RollingFile name="MyFile" fileName="/logs/app-${date:yyyy-MM-dd}.log" filePattern="/logs/app-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="MyFile" fileName="/logs/solicitudRentasLogs-${date:yyyy-MM-dd}.log" filePattern="/logs/solicitudRentasLogs-%d{yyyy-MM-dd}-%i.log">
             <PatternLayout pattern="%d{ISO8601} [%t] %-5level %logger{36} - %msg%n" />
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1" modulate="true" />

@@ -12,7 +12,6 @@ import java.text.SimpleDateFormat;
 public class DateParse {
 
     private static final String DATE_FORMAT = "dd/MM/yyyy";
-
     public static XMLGregorianCalendar createGregorianCalendar(String dateStr)  {
         if (dateStr.equals("")) {
             return null;

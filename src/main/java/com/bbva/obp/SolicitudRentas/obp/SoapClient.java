@@ -46,7 +46,6 @@ public class SoapClient extends WebServiceGatewaySupport {
         if (appProperties.isProxyUsed()){
             webServiceTemplate.setMessageSender(messageSender);
         }
-        String caus = solicitudRenta.getTipoCausante().getTipoDocumento();
         JAXBElement<SolicitudRenta> request = new ObjectFactory().createRegistroSolicitudRentaElement(solicitudRenta);
 
         try {
@@ -57,12 +56,12 @@ public class SoapClient extends WebServiceGatewaySupport {
                     request
             );
 
-            logger.info("Comunicacion exitosa. Respuesta: " + response.getValue().getTipoCodigoTransaccion().getValue());
+            logger.info("Comunicacion exitosa: {} ", response.getValue().getTipoCodigoTransaccion().getValue());
 
             return response.getValue();
         }
         catch (Exception e) {
-            logger.info("Error en comunicacion con OBP => " + e.getMessage());
+            logger.info("Error en comunicacion con OBP: {}", e.getMessage());
 
             e.printStackTrace();
             ResultadoDTO resultado = new ResultadoDTO();
