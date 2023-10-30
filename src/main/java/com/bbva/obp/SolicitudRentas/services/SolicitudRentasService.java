@@ -43,7 +43,7 @@ public class SolicitudRentasService {
         int benefs = registroSolicitudRenta.getTipoBeneficiarios().size();
 
         for (int i = 0; i<benefs; i++){
-            String logToSave = registroSolicitudRenta.getTipoCausante().getTipoDocumento()+ "   " + codigoTransaccion;
+            String logToSave = registroSolicitudRenta.getTipoCausante().getTipoDocumento() + "\t" + codigoTransaccion + "\n";
             logger.info("Log de respuesta: {}", logToSave);
 
 
